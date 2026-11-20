@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI 状态画布</title>
+  <link rel="stylesheet" href="canvas.css">
+  <script src="canvas.js" defer></script>
+</head>
+<body>
+  <header class="toolbar">
+    <h1 id="board-title">UI 状态画布</h1>
+    <div class="controls">
+      <button type="button" id="directory-toggle" aria-controls="directory" aria-expanded="true">目录</button>
+      <a id="prototype-link" class="prototype-link" target="_blank" rel="noopener" hidden>单独打开原型</a>
+      <div class="control-group" role="group" aria-label="画布模式">
+        <button type="button" data-mode="pan" aria-pressed="true">平移</button>
+        <button type="button" data-mode="inspect" aria-pressed="false">检查元素</button>
+        <button type="button" data-mode="interact" aria-pressed="false">操作页面</button>
+      </div>
+      <div class="control-group" role="group" aria-label="画布缩放">
+        <button type="button" id="zoom-out" aria-label="缩小">−</button>
+        <button type="button" id="zoom-reset" aria-label="恢复到 100%" title="恢复到 100%">100%</button>
+        <button type="button" id="zoom-in" aria-label="放大">+</button>
+        <button type="button" id="zoom-fit">适应画布</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <nav id="directory" class="directory" aria-labelledby="directory-title">
+      <h2 id="directory-title">页面目录</h2>
+      <div id="directory-groups"></div>
+    </nav>
+    <div id="viewport" class="viewport" data-mode="pan" aria-label="状态画布">
+      <div id="scene" class="scene"></div>
+      <p id="board-message" class="board-message" role="status" hidden></p>
+    </div>
+    <aside id="inspector" class="inspector" aria-label="元素检查" hidden>
+      <h2>元素检查</h2>
+      <label for="state-select">页面 / 状态</label>
+      <select id="state-select"></select>
+      <p id="frame-summary" class="summary" role="status"></p>
+      <label for="element-select">页面元素</label>
+      <select id="element-select" disabled></select>
+      <dl id="selection-details" hidden>
+        <dt>元素 ID</dt><dd id="selected-id"></dd>
+        <dt>标签</dt><dd id="selected-tag"></dd>
+      </dl>
+      <div id="location-actions" class="location-actions" hidden>
+        <button type="button" id="copy-location">复制组件 ID</button>
+        <span id="copy-status" role="status"></span>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>
