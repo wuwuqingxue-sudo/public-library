@@ -1,0 +1,13 @@
+interface:
+  display_name: HTML 原型标注工具
+  short_description: 在 GPT 预览区为 HTML 原型创建、编辑和导出标注
+  default_prompt: 请为这个 HTML 原型创建可编辑标注，直接生成已标注副本和标注清单。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
