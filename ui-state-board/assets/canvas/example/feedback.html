@@ -1,0 +1,65 @@
+<!doctype html>
+<html id="feedback-document" lang="zh-CN">
+<head id="feedback-head">
+  <meta id="feedback-charset" charset="utf-8">
+  <meta id="feedback-viewport" name="viewport" content="width=device-width, initial-scale=1">
+  <title id="feedback-title">反馈表单</title>
+  <style id="feedback-styles">
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 48px 24px;
+      color: #19333b;
+      background: #f3f7f6;
+      font: 16px/1.5 system-ui, sans-serif;
+    }
+    [hidden] { display: none !important; }
+    main { padding: 24px; background: white; border: 1px solid #dce8e4; border-radius: 16px; }
+    h1 { margin: 0 0 14px; font-size: 29px; }
+    label { display: block; margin: 16px 0 6px; }
+    textarea { display: block; width: 100%; min-height: 116px; padding: 10px; border: 1px solid #9db6af; border-radius: 8px; font: inherit; }
+    button { display: block; width: 100%; margin-top: 16px; padding: 10px; border: 0; border-radius: 8px; background: #116a56; color: white; font: inherit; cursor: pointer; }
+    svg { display: block; width: 44px; height: 44px; margin-bottom: 16px; color: #116a56; }
+  </style>
+</head>
+<body id="feedback-body">
+  <main id="feedback-card">
+    <form id="feedback-form">
+      <h1 id="form-title">发送反馈</h1>
+      <label id="message-label" for="message">你的建议</label>
+      <textarea id="message" name="message" required placeholder="写下你想告诉我们的事"></textarea>
+      <button id="submit-button" type="submit">提交反馈</button>
+    </form>
+    <section id="success-note" hidden>
+      <svg id="success-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path id="success-check" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="m4 12 5 5L20 6"></path>
+      </svg>
+      <h1 id="success-title">反馈已提交</h1>
+      <p id="success-description">谢谢你的建议。</p>
+      <button id="return-button" type="button">再写一条</button>
+    </section>
+  </main>
+  <script id="feedback-script">
+    const form = document.getElementById("feedback-form");
+    const success = document.getElementById("success-note");
+
+    function showSent(sent) {
+      form.hidden = sent;
+      success.hidden = !sent;
+    }
+
+    showSent(new URL(location.href).searchParams.get("state") === "sent");
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      showSent(true);
+      document.getElementById("return-button").focus();
+    });
+    document.getElementById("return-button").addEventListener("click", () => {
+      form.reset();
+      showSent(false);
+      document.getElementById("message").focus();
+    });
+  </script>
+</body>
+</html>
