@@ -1,0 +1,14 @@
+{
+  "title": "UI 状态画布 · 示例",
+  "prototypeSrc": "./example/feedback.html",
+  "groups": [
+    {
+      "name": "反馈表单",
+      "viewport": { "width": 390, "height": 844 },
+      "states": [
+        { "name": "填写反馈", "src": "./example/feedback.html" },
+        { "name": "反馈已提交", "src": "./example/feedback.html?state=sent" }
+      ]
+    }
+  ]
+}
