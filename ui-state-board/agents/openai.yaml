@@ -1,0 +1,13 @@
+interface:
+  display_name: UI 原型状态画布
+  short_description: 按原尺寸清晰平铺已有原型，保留名称备注、同名目录分组与真实交互
+  default_prompt: 用 $ui-state-board 整理已有原型，保留原尺寸和备注，同名页面合并目录，默认100%展示并检查全部交互。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
